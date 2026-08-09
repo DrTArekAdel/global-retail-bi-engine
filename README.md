@@ -1,17 +1,40 @@
-## 🏛️ Executive Strategic Briefing 
+# Global Retail Business Intelligence Dashboard (Maven Market)
 
-*   **🌎 1. Regional Market Penetration & Budget Optimization**
-    *   *The Discovery*: In 1997, the company operated exclusively within the USA market. While international expansion launched in 1998 across Canada and Mexico, the USA territory maintains overwhelming revenue dominance, acting as the primary anchor engine of our global $2M Gross Revenue cache.
-    *   *The Action*: Prioritize the primary marketing budget allocation within the high-performing USA territories. This protects our highest-yielding cash engine while we scale up retail infrastructure in the newer international branches.
+An end-to-end Power BI dashboard built on the Maven Market retail dataset (multi-year transactions across the US, Canada, and Mexico), covering data modeling, DAX measures, and executive-level reporting.
 
-*   **📉 2. Supplier Contract & Quality Optimization**
-    *   *The Anomaly*: High-volume product brands (like Hermanos) generate massive transaction mass (8,071 transactions) and substantial total profit ($32,534) but suffer from low profit margins (58.07%) and elevated customer return rates (1.11%). Conversely, Plato products drive an elite, top-tier profit margin of 63.19%.
-    *   *The Action*: Freeze marketing budget increases for high-volume, low-margin supplier traps. Shift capital allocations to scale up high-margin, low-return "hidden gems" (like Quick or Plato) to maximize global portfolio efficiency.
+## Objective
+Build a star-schema data model and interactive dashboard to track regional sales performance, product/supplier profitability, and customer loyalty tiers for a multinational grocery retailer.
 
-*   **⏳ 3. Last-Quarter Operational Quality Emergency**
-    *   *The Anomaly*: Timeline tracking unmasked a severe operational bottleneck at the close of 1998. Product return volumes surged aggressively over the final two months of the year, peaking at an alarming historical high of nearly 500 returned units.
-    *   *The Action*: Initiate an immediate quality audit on our top-selling supplier shipments. The logistics team must investigate whether this crisis is driven by transport packaging damage or specific winter seasonal product defects.
+## Tech Stack
+Power BI · DAX · Power Query (M) · Python / pandas (supporting EDA) · star-schema data modeling
 
-*   **👥 4. Loyalty Membership Tier Migration Strategy**
-    *   *The Discovery*: Granular customer segment profiling reveals that Bronze cardholders drive the absolute largest share of register traffic, accounting for a massive 151.26K transactions. However, they yield low checkout basket sizes compared to the elite, high-income Golden tier (33.43K transactions).
-    *   *The Action*: Optimize consumer acquisition spending by targeting existing Bronze members with upgrade incentives. Launch a targeted promotion (e.g., *"Spend $50 more this month and unlock free coffee every morning"*) to migrate them to the premium Silver or Golden tiers, expanding the customer lifetime value.
+## Approach
+1. **Data modeling** — built a star schema linking transactions, returns, customers, products, stores, regions, and a calendar dimension table.
+2. **Power Query** — cleaned and shaped seven source CSVs (customers, products, regions, stores, calendar, transactions, returns) before loading.
+3. **DAX** — wrote calculated measures for revenue, profit margin, return rate, and year-over-year comparisons.
+4. **Dashboard design** — built executive-facing pages for regional performance, supplier/product profitability, and customer loyalty segmentation.
+
+## Key Findings
+- The **US market** generated the large majority of total revenue in the dataset; Canada and Mexico (added in 1998) are early-stage by comparison.
+- Some high-volume suppliers (e.g. Hermanos) generate large transaction counts and total profit but carry **lower margins and higher return rates** than smaller suppliers like Plato, which post the highest margin in the dataset.
+- **Product returns spiked in the final two months of 1998**, warranting a supply-chain/quality investigation.
+- **Bronze-tier loyalty customers** drive the highest transaction volume but the lowest average basket size, compared to Golden-tier customers.
+
+## Business Recommendations
+- Continue prioritizing the US market for near-term marketing spend while treating Canada/Mexico as growth markets to monitor.
+- Evaluate whether high-volume, low-margin suppliers are worth the return-rate trade-off, or whether volume should shift toward higher-margin suppliers.
+- Investigate the late-1998 returns spike for a seasonal or logistics root cause.
+- Test upgrade incentives to migrate Bronze customers toward higher-tier spending behavior.
+
+## Dashboard Preview
+![Overview](MM1.PNG)
+![Product & Supplier Analysis](MM2.PNG)
+![Customer Segmentation](MM3.PNG)
+
+## Files
+- `Maven Market _ Final.pbix` — Power BI file (model + dashboard)
+- `Maven Market Project.ipynb` — supporting Python EDA
+- `MavenMarket_*.csv` — source data ([Maven Analytics: Maven Market dataset](https://mavenanalytics.io/))
+
+## How to Run
+Open `Maven Market _ Final.pbix` in Power BI Desktop (free download from Microsoft). All source CSVs are included for the Power Query steps to refresh.
